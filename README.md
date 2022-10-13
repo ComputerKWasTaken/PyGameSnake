@@ -7,12 +7,16 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install pygame.
 
 ```bash
 pip install pygame
+pip install time
+pip install random
 ```
 
 ## Usage
 
 ```python
 import pygame
+import time
+import random
 ```
 
 ## Contributing

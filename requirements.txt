@@ -1,0 +1,3 @@
+pip install random
+pip install time
+pip install pygame

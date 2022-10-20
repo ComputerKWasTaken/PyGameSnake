@@ -58,7 +58,7 @@ def game_loop():
     while not game_over:
 
         while game_close == True:
-            gameDisplay.fill(white)
+            gameDisplay.fill(black)
             message("You Lost! Press C to Play Again or Q to Quit", red)
             pygame.display.update()
 
@@ -91,7 +91,7 @@ def game_loop():
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        gameDisplay.fill(white)
+        gameDisplay.fill(black)
         pygame.draw.rect(gameDisplay, red, [foodx, foody, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)

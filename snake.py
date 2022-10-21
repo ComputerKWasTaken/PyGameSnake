@@ -30,23 +30,31 @@ font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
 
 #functions
+#draws the snake
 def our_snake(snake_block, snake_list):
     for x in snake_list:
         pygame.draw.rect(gameDisplay, green, [x[0], x[1], snake_block, snake_block])
 
+#displays messages
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
     gameDisplay.blit(mesg, [display_width/6, display_height/3])
 
+#main game loop
 def game_loop():
     game_over = False
+    #starting position of the snake
     game_close = False
 
+    #starting speed of the snake
     x1 = display_width / 2
     y1 = display_height / 2
+    #starting position of the food
 
     x1_change = 0
+    #main game loop
     y1_change = 0
+        #game over loop
 
     snake_List = []
     Length_of_snake = 1
@@ -56,6 +64,7 @@ def game_loop():
 
     while not game_over:
 
+        #event loop
         while game_close == True:
             gameDisplay.fill(black)
             message("You Lost! Press C to Play Again or Q to Quit", red)
@@ -84,27 +93,36 @@ def game_loop():
                     x1_change = 0
                 elif event.key == pygame.K_s and y1_change != -snake_block:
                     y1_change = snake_block
+        #if the snake hits the edge of the screen
                     x1_change = 0
 
         if x1 >= display_width or x1 < 0 or y1 >= display_height or y1 < 0:
             game_close = True
+        #draws the background
         x1 += x1_change
+        #draws the food
         y1 += y1_change
+        #draws the snake
         gameDisplay.fill(black)
         pygame.draw.rect(gameDisplay, red, [foodx, foody, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)
+        #if the snake is longer than the length of the snake
         snake_Head.append(y1)
         snake_List.append(snake_Head)
         if len(snake_List) > Length_of_snake:
+        #if the snake hits itself
             del snake_List[0]
 
         for x in snake_List[:-1]:
             if x == snake_Head:
+        #draws the snake
                 game_close = True
 
+        #if the snake eats the food
         our_snake(snake_block, snake_List)
 
+        #sets the speed of the snake
         pygame.display.update()
 
         if x1 == foodx and y1 == foody:

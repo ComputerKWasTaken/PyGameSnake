@@ -7,7 +7,6 @@ import time
 pygame.init()
 
 #colors
-white = (255,255,255)
 black = (0,0,0)
 red = (255,0,0)
 green = (0,155,0)
